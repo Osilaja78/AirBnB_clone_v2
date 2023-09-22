@@ -9,7 +9,7 @@ from models.city import City
 
 class State(BaseModel, Base):
     """ State class """
-    if models.is_type == "db":
+    if models.session_type == "db":
         __tablename__ = "states"
 
         name = Column(String(128), nullable=False)
@@ -19,7 +19,7 @@ class State(BaseModel, Base):
     else:
         name = ""
 
-    if models.is_type != "db":
+    if models.session_type != "db":
         @property
         def cities(self):
             city_list = []

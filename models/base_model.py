@@ -7,7 +7,7 @@ import models
 from sqlalchemy import Column, String, DateTime
 
 
-if models.is_type == "db":
+if models.session_type == "db":
     Base = declarative_base()
 else:
     Base = object
@@ -16,7 +16,7 @@ else:
 class BaseModel:
     """A base class for all hbnb models"""
 
-    if models.is_type == "db":
+    if models.session_type == "db":
         id = Column(String(60), primary_key=True, nullable=False)
         created_at = Column(DateTime, default=datetime.utcnow())
         updated_at = Column(DateTime, default=datetime.utcnow())
