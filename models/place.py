@@ -37,7 +37,7 @@ class Place(BaseModel, Base):
                              viewonly=False)
     amenity_ids = []
 
-    if models.is_type != 'db':
+    if models.session_type != 'db':
         @property
         def reviews(self):
             """ Place reviews """
