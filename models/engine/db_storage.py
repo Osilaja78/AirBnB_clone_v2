@@ -39,8 +39,8 @@ class DBStorage:
         result = {}
         if cls is None:
             classes_to_query = [
-                    User, State, City,
-                    Amenity, Place, Review
+                    Review, User, State, City,
+                    Amenity, Place
                 ]
         else:
             classes_to_query = [cls]

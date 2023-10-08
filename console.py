@@ -19,9 +19,9 @@ class HBNBCommand(cmd.Cmd):
     prompt = '(hbnb) ' if sys.__stdin__.isatty() else ''
 
     classes = {
-               'BaseModel': BaseModel, 'User': User, 'Place': Place,
-               'State': State, 'City': City, 'Amenity': Amenity,
-               'Review': Review
+               'BaseModel': BaseModel, 'User': User, 'Review': Review,
+               'Place': Place, 'State': State, 'City': City,
+               'Amenity': Amenity,
               }
     dot_cmds = ['all', 'count', 'show', 'destroy', 'update']
     types = {
