@@ -17,11 +17,11 @@ def do_pack():
     """
 
     try:
+        local("mkdir -p versions")
         now = datetime.now()
         timestamp = now.strftime("%Y%m%d%H%M%S")
         archive_path = f"versions/web_static_{timestamp}.tgz"
-        local("mkdir -p versions")
-        local(f"tar -cvfz {archive_path} web_static")
+        local(f"sudo tar -cvzf {archive_path} web_static")
         return archive_path
     except Exception as e:
         return f"Error: {e}"
