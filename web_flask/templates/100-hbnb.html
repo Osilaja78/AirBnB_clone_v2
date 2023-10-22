@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
     <title>AirBnB Clone</title>
-    <link rel="stylesheet" type="text/css" href="../statc/styles/4-common.css">
+    <link rel="stylesheet" type="text/css" href="../static/styles/4-common.css">
     <link rel="stylesheet" type="text/css" href="../static/styles/3-header.css">
     <link rel="stylesheet" type="text/css" href="../static/styles/3-footer.css">
     <link rel="stylesheet" type="text/css" href="../static/styles/6-filters.css">
-    <link rel="shortcut icon" href="../satic/images/icon.png" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="../static/styles/8-places.css">
+    <link rel="shortcut icon" href="../static/images/icon.png" type="image/x-icon">
 </head>
 <body>
     <header>
@@ -40,6 +41,36 @@
                 </ul>
             </div>
             <button>Search</button>
+        </section>
+        <section class="places">
+            <h1>Places</h1>
+            {% for place in places %}
+                <article>
+                    <h2>{{ place.name }}</h2>
+                    <div class="price_by_night">
+                        <p>{{ place.price_by_night }}</p>
+                    </div>
+                    <div class="information">
+                        <div class="max_guest">
+                            <p>{{ place.max_guest }}</p>
+                        </div>
+                        <div class="number_rooms">
+                            <p>{{ place.number_rooms }}</p>
+                        </div>
+                        <div class="number_bathrooms">
+                            <p>{{ place.number_bathrooms }}</p>
+                        </div>
+                    </div>
+                    <div class="user">
+                            <p><b>Owner:</b> {{ place.user.name }}</p>
+                    </div>
+                    <div class="description">
+                        <p>
+                            {{ place.description|safe }}
+                        </p>
+                    </div>
+                </article>
+            {% endfor %}
         </section>
     </div>
     <footer>
