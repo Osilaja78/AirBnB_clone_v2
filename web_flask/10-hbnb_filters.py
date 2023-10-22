@@ -5,27 +5,24 @@ A flask app that renders a template.
 from flask import Flask, render_template
 from models import storage
 from models.state import State
+from models.amenity import Amenity
 
 
 app = Flask(__name__)
 
 
-@app.route("/states", strict_slashes=False)
-@app.route("/states/<state_id>", strict_slashes=False)
-def states_with_id(state_id=None):
+@app.route("/hbnb_filters", strict_slashes=False)
+def hbnb_filters():
     """
-    Returns all states if no id is passed,
-    else it returns all cities under the state
-    with the specific id passed.
+    Displays states and amenities filters.
     """
-    states = storage.all(State)
-    if state_id is not None:
-        state_id = f"State.{state_id}"
+    states = storage.all(State).values()
+    amenities = storage.all(Amenity).values()
 
     return render_template(
-        '9-states.html',
+        '10-hbnb_filters.html',
         states=states,
-        state_id=state_id
+        amenities=amenities
     )
 
 
