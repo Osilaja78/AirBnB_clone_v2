@@ -10,17 +10,18 @@ from models.state import State
 app = Flask(__name__)
 
 
-@app.teardown_appcontext
-def teardown():
-    """Handles storage.close()"""
-    storage.close()
-
-
 @app.route("/states_list", strict_slashes=False)
 def list_states():
     """Returns a list of all states"""
     states = storage.all(State).values()
+    print(f"States =======> {states}")
     return render_template("7-states_list.html", states=states)
+
+
+@app.teardown_appcontext
+def teardown_func(exception):
+    """Handles storage.close()"""
+    storage.close()
 
 
 if __name__ == '__main__':
